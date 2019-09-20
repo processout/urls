@@ -8,6 +8,8 @@ executors:
 jobs:
   test:
     executor: go
+    environment:
+      CODECOV_TOKEN: 7094a724-8d88-45a0-afd1-86285b954ed4
     steps:
       - checkout
       - restore_cache:
@@ -20,6 +22,7 @@ jobs:
           paths:
             - "/go/pkg/mod"
       # Report code coverage
+      - run: bash <(curl -s https://codecov.io/bash)
 
 workflows:
   version: 2
