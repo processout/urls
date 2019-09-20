@@ -1,0 +1,28 @@
+version: 2.1
+
+executors:
+  go:
+    docker:
+      - image: circleci/golang:1.12.1
+
+jobs:
+  test:
+    executor: go
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - go-mod-v1-{{ checksum "go.mod" }}
+      - run: make style
+      - run: make coverage
+      - save_cache:
+          key: go-mod-v1-{{ checksum "go.mod" }}
+          paths:
+            - "/go/pkg/mod"
+      # Report code coverage
+
+workflows:
+  version: 2
+  urls:
+    jobs:
+      - test

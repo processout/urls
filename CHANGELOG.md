@@ -11,4 +11,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [0.0.1]: https://github.com/kaluza-tech/urls/releases/tag/v0.0.1
 ### Added
 - Add the Join function
+- Add the JoinURL function
 - Add Documentation and documentation generation
