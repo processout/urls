@@ -1,8 +1,14 @@
 GOLANGCI_LINT_DEP=github.com/golangci/golangci-lint/cmd/golangci-lint@v1.17.1
+COVERFILE=cover.out
 
 .PHONY: coverage
 coverage:
-	go test -v -race ./... -coverprofile=cover.out -covermode=atomic
+	go test -v -race ./... -coverprofile=$(COVERFILE) -covermode=atomic
+
+.PHONY: coverage-html
+coverage-html: coverage
+coverage-html: ## Generate test coverage report in html
+	go tool cover -html=$(COVERFILE)
 
 .PHONY: deps
 deps: ## Install dependencies
@@ -11,4 +17,4 @@ deps: ## Install dependencies
 
 .PHONY: style
 style: deps
-	golangci-lint -run
+	golangci-lint run
