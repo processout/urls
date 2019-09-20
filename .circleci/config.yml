@@ -5,6 +5,12 @@ executors:
     docker:
       - image: circleci/golang:1.12.1
 
+commands:
+  report_coverage:
+    description: "Report coverage up to codecov.io"
+    steps:
+      - run: bash <(curl -s https://codecov.io/bash) -t 7094a724-8d88-45a0-afd1-86285b954ed4
+
 jobs:
   test:
     executor: go
@@ -19,11 +25,7 @@ jobs:
           key: go-mod-v1-{{ checksum "go.mod" }}
           paths:
             - "/go/pkg/mod"
-      - run:
-        name: report coverage
-        environment:
-          CODECOV_TOKEN: 7094a724-8d88-45a0-afd1-86285b954ed4
-        command: bash <(curl -s https://codecov.io/bash)
+      - run: report_coverage
 
 workflows:
   version: 2
