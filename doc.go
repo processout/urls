@@ -2,7 +2,7 @@
 Package urls provides some very helpful functions for manipulating URLs.
 
 For example, you may want to simply add a path onto your url.
-If you were to use the path pacakge you would end up with unexpected result:
+If you were to use the path pacakge you would end up with an unexpected result:
 	fmt.Println(path.Join("http://original.url.com/stuff", "addition"))
 	// Results in "http:/original.url.com/stuff/addition", which is unexpected
 
