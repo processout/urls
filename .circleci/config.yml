@@ -14,7 +14,7 @@ commands:
       filename:
         type: string
     steps:
-      - run: bash <(curl -s https://codecov.io/bash) -t << parameters.token >>
+      - run: bash <(curl -s https://codecov.io/bash) -t << parameters.token >> -f << parameters.filename >>
 
 jobs:
   test:
