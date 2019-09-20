@@ -12,7 +12,7 @@ func ExampleJoin_joinPaths() {
 	if err != nil {
 		fmt.Println("unexpected error: ", err)
 	}
-	fmt.Println("newURL = ", newURL)
+	fmt.Println(newURL)
 	// Output:
 	// http://original.url.com/stuff/addition/extrastuff
 }
@@ -22,7 +22,7 @@ func ExampleJoin_withQueryParameters() {
 	if err != nil {
 		fmt.Println("unexpected error: ", err)
 	}
-	fmt.Println("newURL = ", newURL)
+	fmt.Println(newURL)
 	// Output:
 	// http://original.url.com/stuff/addition/extrastuff?query=param
 }
@@ -33,7 +33,7 @@ func ExampleJoinURL_joinPaths() {
 		fmt.Println("unexpected error: ", err)
 	}
 	urls.JoinURL(newURL, "addition", "extrastuff")
-	fmt.Println("newURL = ", newURL.String())
+	fmt.Println(newURL.String())
 	// Output:
 	// http://original.url.com/stuff/addition/extrastuff
 }
@@ -44,7 +44,7 @@ func ExampleJoinURL_withQueryParameters() {
 		fmt.Println("unexpected error: ", err)
 	}
 	urls.JoinURL(newURL, "addition", "extrastuff")
-	fmt.Println("newURL = ", newURL.String())
+	fmt.Println(newURL.String())
 	// Output:
 	// http://original.url.com/stuff/addition/extrastuff?query=param
 }
