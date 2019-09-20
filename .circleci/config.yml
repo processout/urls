@@ -8,8 +8,11 @@ executors:
 commands:
   report_coverage:
     description: "Report coverage up to codecov.io"
+    parameters:
+      token:
+        type: string
     steps:
-      - run: bash <(curl -s https://codecov.io/bash) -t 7094a724-8d88-45a0-afd1-86285b954ed4
+      - run: bash <(curl -s https://codecov.io/bash) -t << parameters.token >>
 
 jobs:
   test:
@@ -25,7 +28,8 @@ jobs:
           key: go-mod-v1-{{ checksum "go.mod" }}
           paths:
             - "/go/pkg/mod"
-      - run: report_coverage
+      - report_coverage:
+          token: 7094a724-8d88-45a0-afd1-86285b954ed4
 
 workflows:
   version: 2
