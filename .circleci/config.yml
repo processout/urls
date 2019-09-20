@@ -1,0 +1,41 @@
+version: 2.1
+
+executors:
+  go:
+    docker:
+      - image: circleci/golang:1.12.1
+
+commands:
+  upload_coverage:
+    description: "Upload coverage up to codecov.io"
+    parameters:
+      token:
+        type: string
+      filename:
+        type: string
+    steps:
+      - run: bash <(curl -s https://codecov.io/bash) -t << parameters.token >> -f << parameters.filename >>
+
+jobs:
+  test:
+    executor: go
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - go-mod-v1-{{ checksum "go.mod" }}
+      - run: make style
+      - run: make coverage
+      - save_cache:
+          key: go-mod-v1-{{ checksum "go.mod" }}
+          paths:
+            - "/go/pkg/mod"
+      - upload_coverage:
+          token: 7094a724-8d88-45a0-afd1-86285b954ed4
+          filename: cover.out
+
+workflows:
+  version: 2
+  urls:
+    jobs:
+      - test
