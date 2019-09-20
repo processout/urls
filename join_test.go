@@ -61,7 +61,9 @@ func TestJoin(t *testing.T) {
 		t.Run(tc.name, func(t *testing.T) {
 			t.Parallel()
 			result, err := urls.Join(tc.args...)
-			assert.NilError(t, err)
+			if err != nil {
+				t.Fatal(err)
+			}
 			assert.Equal(t, tc.expected, result)
 		})
 	}

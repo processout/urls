@@ -10,10 +10,10 @@ With this package you can end up with the expected result:
 	newURL, err := urls.Join("http://original.url.com/stuff", "addition")
 	// newURL is "http://original.url.com/stuff/addition", as expected
 
-If you are alredy starting with a url object then you can get an updated url object:
-	origURL, _ := url.Parse("http://original.url.com/stuff")
-	newURL := urls.JoinURL(origURL, "addition")
-	// newURL.String() is "http://original.url.com/stuff/addition", as expected
+If you are alredy starting with a *url.URL pointer then you can get an updated *url.URL pointer:
+	myURL, _ := url.Parse("http://original.url.com/stuff")
+	urls.JoinURL(myURL, "addition")
+	// myURL.String() is "http://original.url.com/stuff/addition", as expected
 
 */
 package urls
