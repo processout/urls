@@ -3,6 +3,8 @@ package urls
 import (
 	"net/url"
 	"path"
+
+	"github.com/pkg/errors"
 )
 
 // Join is equivalent to path.Join, except that it works for urls
@@ -12,7 +14,7 @@ func Join(paths ...string) (string, error) {
 	}
 	url, err := url.Parse(paths[0])
 	if err != nil {
-		return "", err
+		return "", errors.Wrap(err, "url.Parse")
 	}
 	// overwrite path[0] with url.Path as that won't have URL protocol
 	paths[0] = url.Path

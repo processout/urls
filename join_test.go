@@ -69,5 +69,5 @@ func TestJoin(t *testing.T) {
 
 func TestJoinError(t *testing.T) {
 	_, err := urls.Join(string(0x7f))
-	assert.Error(t, err, "blah")
+	assert.ErrorContains(t, err, "url.Parse")
 }
