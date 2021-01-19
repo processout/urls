@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"net/url"
 
-	"github.com/kaluza-tech/urls"
+	"github.com/processout/urls"
 )
 
 func ExampleJoin_joinPaths() {

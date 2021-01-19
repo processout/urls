@@ -4,7 +4,7 @@ import (
 	"net/url"
 	"testing"
 
-	"github.com/kaluza-tech/urls"
+	"github.com/processout/urls"
 	"gotest.tools/assert"
 )
 

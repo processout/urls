@@ -3,7 +3,7 @@ package urls_test
 import (
 	"testing"
 
-	"github.com/kaluza-tech/urls"
+	"github.com/processout/urls"
 	"gotest.tools/assert"
 )
 

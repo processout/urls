@@ -1,4 +1,4 @@
-module github.com/kaluza-tech/urls
+module github.com/processout/urls
 
 go 1.12
 
